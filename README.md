@@ -1,4 +1,4 @@
-Simple fabric mod for Minecraft that plays a chime when a "captcha" pops up on the multiplayer server OPBlocks.
+Simple fabric mod for Minecraft that plays a chime when a "captcha" pops up on the multiplayer server.
 
 Minecraft Version: 1.20.1 
 Fabric Loader: >=1.15.77
