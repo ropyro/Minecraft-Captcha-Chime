@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "captcha-chime",
+	"version": "${version}",
+	"name": "Captcha Chime",
+	"description": "Chime noise is played whenever an OPB captcha pops up.",
+	"authors": [
+		"ropy :)"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/captcha-chime/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"ropy.captchachime.CaptchaChime"
+		],
+		"client": [
+			"ropy.captchachime.CaptchaChimeClient"
+		]
+	},
+	"mixins": [
+		"captcha-chime.mixins.json",
+		{
+			"config": "captcha-chime.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.7",
+		"minecraft": "~1.20.1",
+		"java": ">=17"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
