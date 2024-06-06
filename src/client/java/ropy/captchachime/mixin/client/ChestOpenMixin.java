@@ -21,28 +21,22 @@ public class ChestOpenMixin extends Screen {
         super(title);
     }
 
+    /**
+     * Detects when a container GUI with the name "Captcha" is opened for the player
+     */
     @Inject(method = "init", at = @At("HEAD"))
-    private void onInit(CallbackInfo info) {
+    private void onInit(CallbackInfo info) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player != null && client.currentScreen instanceof GenericContainerScreen) {
             Text containerName = client.currentScreen.getTitle();
-            if(containerName.contains(Text.of("Captcha"))){
-                new Thread(() -> {
-                    try {
-                        playChime();
-                    } catch (Exception e) {
-                        System.err.println(e.getMessage());
-                    }
-                }).start();
+            if (containerName.contains(Text.of("Captcha"))) {
+                try {
+                    CaptchaChime.playChime();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
                 client.player.sendMessage(Text.of("Captcha detected!"), false);
             }
         }
-    }
-
-    public synchronized void playChime() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
-        AudioInputStream audioIn = AudioSystem.getAudioInputStream(new CaptchaChime().getClass().getResource("/chime-sound-7143.wav"));
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioIn);
-        clip.start();
     }
 }

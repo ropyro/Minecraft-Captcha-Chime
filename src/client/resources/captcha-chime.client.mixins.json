@@ -3,7 +3,8 @@
 	"package": "ropy.captchachime.mixin.client",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
-		"ChestOpenMixin"
+		"ChestOpenMixin",
+		"ChatMessageRecieveMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
